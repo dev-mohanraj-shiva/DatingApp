@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DatabaseContext>(
         option.UseSqlite(builder.Configuration.GetConnectionString("baseConnection"));
     }
 );
+builder.Services.AddCors();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +25,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(x => x.AllowAnyHeader().
+                AllowAnyMethod().
+                AllowAnyOrigin()
+                // .WithOrigins("","")
+                );
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
