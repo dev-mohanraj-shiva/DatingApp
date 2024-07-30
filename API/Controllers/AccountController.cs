@@ -4,13 +4,14 @@ using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
    
-    public class AccountController(DatabaseContext context) : BaseApiController
+    public class AccountController(DatabaseContext context,ITokenService tokenService) : BaseApiController
     {
        
        [HttpPost("CreateAccount")] // account/createaccount
@@ -33,7 +34,7 @@ namespace API.Controllers
        }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<User>> Login(LoginDto loginDto)
+        public async Task<ActionResult<TokenDto>> Login(LoginDto loginDto)
         {
             var user = await context.Users.FirstOrDefaultAsync(u => u.UserName.ToLower().Equals(loginDto.userName));
 
@@ -50,7 +51,8 @@ namespace API.Controllers
                     return Unauthorized("Invalid Password");
             }
 
-            return user;
+            TokenDto tokenDto = new TokenDto{Token = tokenService.CreateToken(user)};
+            return tokenDto;
         }
 
        private async Task<bool> UserExists(string userName)
