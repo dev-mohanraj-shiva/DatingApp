@@ -4,10 +4,10 @@ import { inject, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountServiceService {
+export class AccountService {
 
   private http = inject(HttpClient);
-  baseUrl:string = "http://localhost:/api/"
+  baseUrl:string = "http://localhost:5185/api/"
 
   Login(model:any)
   {
