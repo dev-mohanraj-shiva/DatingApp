@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../services/account-service.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -12,10 +12,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
-export class NavComponent {
+export class NavComponent  {
   accountService = inject(AccountService)
   isLoggedIn:boolean = false;
   model:any = {};
+
 
    login()
   {
@@ -32,7 +33,6 @@ export class NavComponent {
   }
   logout()
   {
-    this.isLoggedIn= false;
-
+    this.accountService.logout();
   }
 }
