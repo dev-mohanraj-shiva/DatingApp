@@ -6,6 +6,14 @@
     <label>User Name</label>
   </div>
   <div class="mb-3 form-floating">
+    <label>Available users</label>
+    <select class="form-control" name ="availableusers">
+      @for (user of availableUsers(); track $index) {
+        <option [value] = "user.userName"></option>
+      }
+    </select>
+  </div>
+  <div class="mb-3 form-floating">
     <input type="text" class="form-control" placeholder="password" [(ngModel)]="model.password" name ="password">
     <label>Password</label>
   </div>
