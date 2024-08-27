@@ -1,6 +1,7 @@
 import { compileNgModule } from '@angular/compiler';
-import { Component, EventEmitter, Input, input, model, output, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, input, model, output, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AccountService } from '../services/account-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,12 +20,21 @@ export class RegistrationComponent {
   //// new method
   cancelRegister = output<boolean>();
 
+  private accountService = inject(AccountService);
   model:any={}
 
 register()
 {
-  console.log('register called');
-  console.log(this.model);
+    this.accountService.Register(this.model).subscribe(
+      {
+          next: response => {
+              console.log(response);
+          },
+          error: error => {
+              console.log(error);
+          }
+      }
+    )
 }
 cancel(){
   this.cancelRegister.emit(false);}
