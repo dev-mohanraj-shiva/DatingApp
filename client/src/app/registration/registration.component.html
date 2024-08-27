@@ -9,7 +9,7 @@
     <label>Available users</label>
     <select class="form-control" name ="availableusers">
       @for (user of availableUsers(); track $index) {
-        <option [value] = "user.userName"></option>
+        <option [value] = "user.id" [text]="user.userName"></option>
       }
     </select>
   </div>

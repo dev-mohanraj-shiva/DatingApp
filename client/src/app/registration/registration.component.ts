@@ -1,5 +1,5 @@
 import { compileNgModule } from '@angular/compiler';
-import { Component, input, model } from '@angular/core';
+import { Component, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegistrationComponent {
   availableUsers  = input.required<any>();
+
   model:any={}
 
 register()
