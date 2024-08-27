@@ -15,7 +15,9 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-4">
-            <app-registration [availableUsers]="users"></app-registration>
+            <app-registration [availableUsers]="users"
+              (cancelRegister)="cancelRegister($event)"
+            ></app-registration>
           </div>
         </div>
       </div>

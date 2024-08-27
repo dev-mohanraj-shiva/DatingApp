@@ -1,5 +1,5 @@
 import { compileNgModule } from '@angular/compiler';
-import { Component, input, model, output } from '@angular/core';
+import { Component, EventEmitter, input, model, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegistrationComponent {
   availableUsers  = input.required<any>();
+  @Output() cancelRegister = new EventEmitter();
 
   model:any={}
 
@@ -19,5 +20,6 @@ register()
   console.log('register called');
   console.log(this.model);
 }
-cancel(){console.log('Cancel Called');}
+cancel(){
+  this.cancelRegister.emit(false);}
 }

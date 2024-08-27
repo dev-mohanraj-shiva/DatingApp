@@ -23,6 +23,11 @@ export class HomeComponent implements OnInit {
     this.registerMode = !this.registerMode;
   }
 
+  cancelRegister(event:boolean)
+  {
+    this.registerMode=false;
+    console.log(this.registerMode);
+  }
 
   getUsers()
   {
