@@ -1,5 +1,5 @@
 import { compileNgModule } from '@angular/compiler';
-import { Component, EventEmitter, input, model, Output } from '@angular/core';
+import { Component, EventEmitter, Input, input, model, output, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,8 +10,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent {
+  //// old method
+  // @Input() availableUsers:any;
+  //// new method
   availableUsers  = input.required<any>();
-  @Output() cancelRegister = new EventEmitter();
+  //// old method
+  // @Output() cancelRegister = new EventEmitter();
+  //// new method
+  cancelRegister = output<boolean>();
 
   model:any={}
 

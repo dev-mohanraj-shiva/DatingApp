@@ -6,10 +6,12 @@
     <label>User Name</label>
   </div>
   <div class="mb-3 form-floating">
-    <label>Available users</label>
-    <select class="form-control" name ="availableusers">
+    <label>Available Users</label>
+  </div>
+  <div class="mb-3 form-floating">
+    <select class="form-control" name ="availableusers" title="Available users">
       @for (user of availableUsers(); track $index) {
-        <option [value] = "user.id" [text]="user.userName"></option>
+        <option [value] = "user.id">{{user.userName}}</option>
       }
     </select>
   </div>
