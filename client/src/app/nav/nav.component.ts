@@ -4,6 +4,7 @@ import { AccountService } from '../services/account-service.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastrComponentlessModule, ToastrService } from 'ngx-toastr';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,8 @@ import { ToastrComponentlessModule, ToastrService } from 'ngx-toastr';
   imports: [FormsModule,
     BsDropdownModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    TitleCasePipe
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
