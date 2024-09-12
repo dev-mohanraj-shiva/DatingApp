@@ -8,9 +8,16 @@ import { guardGuard } from './_guards/guard.guard';
 
 export const routes: Routes = [
   {path:"",component:HomeComponent},
-  {path:"members",component:MembersComponent, canActivate:[guardGuard]},
-  {path:"members/:id",component:MemberdetailComponent},
-  {path:"lists",component:ListComponent},
-  {path:"messages",component:MessagesComponent},
+  {
+    path:"",
+    canActivate:[guardGuard],
+    children:
+    [
+      {path:"members",component:MembersComponent},
+      {path:"members/:id",component:MemberdetailComponent},
+      {path:"lists",component:ListComponent},
+      {path:"messages",component:MessagesComponent},
+    ]
+  },
   {path:"**",component:HomeComponent},
 ];
